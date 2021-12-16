@@ -63,6 +63,7 @@ public class SettingWindow extends JFrame {
                 Logic.SIZE = size;
                 Logic.DOT_WIN = winline;
                 Logic.initMap();
+                Logic.gameFinished = false;
 
                 gameWindow.startNewGame(size, winline);
                 setVisible(false);
