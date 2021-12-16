@@ -14,31 +14,34 @@ public class Logic {
 
     static char[][] map;
 
-    static Scanner sc = new Scanner(System.in);
     static Random random = new Random();
 
+    static boolean gameFinished;
+
     static void go() {
+        gameFinished = true;
+        printMap();
+        if(checkWin(DOT_X, DOT_WIN)){
+            System.out.println("Поздравляем! Вы выйграли!");
+            return;
+        }
+        if(isFull()){
+            System.out.println("Ничья");
+            return;
+        }
 
-            printMap();
-            if(checkWin(DOT_X, DOT_WIN)){
-                System.out.println("Поздравляем! Вы выйграли!");
-                return;
-            }
-            if(isFull()){
-                System.out.println("Ничья");
-                return;
-            }
+        aiTurn();
+        printMap();
+        if(checkWin(DOT_O, DOT_WIN)) {
+            System.out.println("Компьютер победил.");
+            return;
+        }
+        if(isFull()){
+            System.out.println("Ничья");
+            return;
+        }
 
-            aiTurn();
-            printMap();
-            if(checkWin(DOT_O, DOT_WIN)) {
-                System.out.println("Компьютер победил.");
-                return;
-            }
-            if(isFull()){
-                System.out.println("Ничья");
-                return;
-            }
+        gameFinished = false;
     }
     public static void initMap() {
         map = new char[SIZE][SIZE];

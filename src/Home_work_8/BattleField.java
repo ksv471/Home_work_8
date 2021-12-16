@@ -26,7 +26,10 @@ public class BattleField extends JPanel {
                 int cellX = e.getX() / cellWidth;
                 int cellY = e.getY() / cellHeight;
 
-                Logic.humanTurn(cellX,cellY);
+
+                if(!Logic.gameFinished) {
+                    Logic.humanTurn(cellX,cellY);
+                }
             }
         });
     }
@@ -63,8 +66,27 @@ public class BattleField extends JPanel {
             g.drawLine(x, 0, x, getHeight());
         }
 
+        for (int i = 0; i < Logic.SIZE; i++) {
+            for (int j = 0; j < Logic.SIZE; j++) {
+                if(Logic.map[j][i] == Logic.DOT_X) {
+                    drawX(g, i, j);
+                }
+            }
+
+        }
+
 //        g.setColor(Color.RED);
 //        ((Graphics2D)g).setStroke(new BasicStroke(5f));
 //        g.drawLine(100, 100, 300, 400);
+    }
+
+    private void drawX(Graphics g, int cellX, int cellY){
+        g.setColor(Color.BLACK);
+        ((Graphics2D)g).setStroke(new BasicStroke(2f));
+
+        g.drawLine(cellX*cellWidth, cellY * cellHeight,
+                cellX*cellWidth + cellWidth, cellY * cellHeight+cellHeight);
+
+
     }
 }
