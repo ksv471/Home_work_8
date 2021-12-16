@@ -66,6 +66,15 @@ public class BattleField extends JPanel {
             g.drawLine(x, 0, x, getHeight());
         }
 
+        for (int i = 0; i < Logic.SIZE; i++) {
+            for (int j = 0; j < Logic.SIZE; j++) {
+                if(Logic.map[j][i] == Logic.DOT_X) {
+                    drawX(g, i, j);
+                }
+            }
+
+        }
+
 //        g.setColor(Color.RED);
 //        ((Graphics2D)g).setStroke(new BasicStroke(5f));
 //        g.drawLine(100, 100, 300, 400);
@@ -77,6 +86,7 @@ public class BattleField extends JPanel {
 
         g.drawLine(cellX*cellWidth, cellY * cellHeight,
                 cellX*cellWidth + cellWidth, cellY * cellHeight+cellHeight);
+
 
     }
 }
