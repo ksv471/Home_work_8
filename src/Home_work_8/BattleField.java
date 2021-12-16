@@ -26,7 +26,10 @@ public class BattleField extends JPanel {
                 int cellX = e.getX() / cellWidth;
                 int cellY = e.getY() / cellHeight;
 
-                Logic.humanTurn(cellX,cellY);
+
+                if(!Logic.gameFinished) {
+                    Logic.humanTurn(cellX,cellY);
+                }
             }
         });
     }
